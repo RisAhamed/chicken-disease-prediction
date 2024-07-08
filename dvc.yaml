@@ -46,7 +46,7 @@ stages:
   evaluation:
     cmd: python src/CNN_Classifier/pipeline/stage_05_evaluation.py
     deps:
-      - src/CNN_Classifier/pipeline/stage_04_evaluation.py
+      - src/CNN_Classifier/pipeline/stage_05_evaluation.py
       - config/config.yaml
       - artifacts/data_ingestion/Chicken-fecal-images
       - artifacts/training/model.h5
