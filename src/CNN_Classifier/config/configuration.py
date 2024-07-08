@@ -4,7 +4,7 @@ from src.CNN_Classifier import logger
 from pathlib import Path
 import os
 from src.CNN_Classifier.entity.config_entity import DataIngestionConfig
-from src.CNN_Classifier.entity.config_entity import PrepareBaseModelConfig,PrepareCallbacksConfig,TrainingConfig
+from src.CNN_Classifier.entity.config_entity import PrepareBaseModelConfig,PrepareCallbacksConfig,TrainingConfig,EvaluationConfig
 
 
 class ConfigurationManager:
@@ -90,3 +90,14 @@ class ConfigurationManager:
         )
 
         return training_config
+
+
+    def get_validation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model=Path("artifacts/training/model.h5"),
+            training_data=Path("artifacts/data_ingestion/Chicken-fecal-images"),
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config
